@@ -5,6 +5,12 @@
 
 int main(int argc, char **argv)
 {
+	std::string line;
+	int start = 0;
+	int end = 0;
+	std::string s = argv[2];
+	int len = s.length();
+	bool found = false;
 	if(argc != 4)
 	{
 		std::cout << "wrong number of arguments";
@@ -23,19 +29,17 @@ int main(int argc, char **argv)
 		std::cout << "fail open write fd";
 		return(1);
 	}
-	std::string line;
-	int start = 0;
-	int end = 0;
-	std::string s = argv[2];
-	int len = s.length();
 	while(std::getline(read_fd, line))
 	{
 		start = 0;
 		while((start = line.find(argv[2], start)) != std::string::npos)
 		{
+			found = true;
 			line.erase(start, len);
 			line.insert(start, argv[3]);
 		}
-		write_fd << line;
+		write_fd << line << std::endl;
 	}
+	if (!found)
+		std::cout << "Aucune occurrence trouvee" << std::endl;
 }
