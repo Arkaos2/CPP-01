@@ -3,8 +3,17 @@
 int main()
 {
 	Harl Harl;
-	Harl.complain("INFO");
-	Harl.complain("WARNING");
-	Harl.complain("ERROR");
+
 	Harl.complain("DEBUG");
+	std::cout << std::endl;
+
+	Harl.complain("INFO");
+	std::cout << std::endl;
+
+	Harl.complain("WARNING");
+	std::cout << std::endl;
+
+	Harl.complain("ERROR");
+
+	return 0;
 }
